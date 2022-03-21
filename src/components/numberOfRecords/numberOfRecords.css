@@ -1,0 +1,20 @@
+.num-records-style {
+    width: 100%;
+    text-align: left;
+    padding-bottom: 12px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.num-records-style div {
+
+    width: max-content;
+    height: 20px;
+    background-color: rgb(191, 240, 191);
+    color: darkgreen;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
