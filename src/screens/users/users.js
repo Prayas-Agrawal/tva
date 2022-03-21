@@ -2,19 +2,26 @@ import React, { useEffect, useState } from "react";
 import { Api } from "../../api/api";
 import { UserDataRow } from "../../models/userModel";
 import DataGrid from "../../components/dataGrid/dataGrid";
-import Search from "../../components/search";
+import { Search } from "../../components/search/search";
 import { Utils } from "../../utils/utils";
 import "./users.css";
+import NumberOfRecords from "../../components/numberOfRecords/numberOfRecords";
+
+
+
 
 export default function Users() {
+  const [response, setResponse] = useState([]);
   const [userRows, setUserRows] = useState([]);
+  const [filterIsEmpty, setFilterIsEmpty] = useState(false);
+  const [pageSize, setPageSize] = useState(10);
 
   useEffect(async () => {
     try {
       const _usersList = await Api.getUsers();
       const _userRows = _usersList.map((_json) => new UserDataRow(_json));
+      setResponse(_userRows);
       setUserRows(_userRows);
-      console.log("got data: ", _userRows);
     } catch (e) {
       console.log("somethings up: ", e);
     }
@@ -27,16 +34,37 @@ export default function Users() {
     });
   }
 
+  function handleFilter(query) {
+    const filterData = Utils.filter(response, query);
+    if (filterData == null || filterData.length == 0) {
+      setFilterIsEmpty(true);
+    } else {
+      setFilterIsEmpty(false);
+    }
+    setUserRows((val) => {
+      return filterData;
+    });
+  }
+
+  function handleChangePageSize(pageSize) {
+    setPageSize(pageSize);
+  }
+
   return (
     <div className="users-container-style">
-      {/* <Search /> */}
       <div className="users-header">Users</div>
+      <Search
+        filterCallback={handleFilter}
+        changePageSizeCallback={handleChangePageSize}
+      />
+      <NumberOfRecords size={userRows.length}/>
       <DataGrid
         data={userRows}
-        pageSize={10}
+        filterIsEmpty={filterIsEmpty}
+        pageSize={pageSize}
         sortCallback={handleSort}
         noDataText="Sorry! No Data present in table"
-        noSearchResultsText="Search returned 0 rows. Please try searching something different"
+        noSearchResultsText="No Results"
       />
     </div>
   );

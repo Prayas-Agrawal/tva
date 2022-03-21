@@ -71,13 +71,19 @@ function getPageData(data, pageNum, pageSize) {
   return data.slice(_startIndex, _endIndex);
 }
 
-export default function DataGrid({ pageSize, data, sortCallback }) {
+export default function DataGrid({
+  pageSize,
+  data,
+  sortCallback,
+  filterIsEmpty,
+  noSearchResultsText,
+}) {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageData, setPageData] = useState(data);
 
   useEffect(() => {
     setPageData(getPageData(data, 1, pageSize));
-  }, [data]);
+  }, [data, pageSize]);
 
   useEffect(() => {
     setPageData(getPageData(data, pageNumber, pageSize));
@@ -108,7 +114,7 @@ export default function DataGrid({ pageSize, data, sortCallback }) {
 
   function handlePageNumberChange(pageNum) {
     const _maxNumOfPages = Math.ceil(data.length / pageSize);
-    if(pageNum != 0 && pageNum != _maxNumOfPages + 1) {
+    if (pageNum != 0 && pageNum != _maxNumOfPages + 1) {
       setPageNumber(pageNum);
     }
   }
@@ -128,9 +134,15 @@ export default function DataGrid({ pageSize, data, sortCallback }) {
           </tr>
         </thead>
         <tbody>
-          {pageData.map((el) => (
-            <DataRow user={el} />
-          ))}
+          {filterIsEmpty == false ? (
+            pageData.map((el) => <DataRow key={el} user={el} />)
+          ) : (
+            <tr>
+              <td colspan="100%" style={{ textAlign: "center" }}>
+                {noSearchResultsText}
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
       <PageFooter
