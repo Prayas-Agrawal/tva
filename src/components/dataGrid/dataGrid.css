@@ -1,0 +1,93 @@
+.data-grid-container-style {
+  background-color: white;
+  box-sizing: border-box;
+  overflow: auto;
+  font-size: 14px;
+  color: #212529;
+  font-weight: 360;
+}
+
+.data-grid-style {
+  border-collapse: collapse;
+  text-overflow: ellipsis;
+}
+
+.data-grid-style td {
+  min-width: 64px;
+}
+
+.data-grid-header {
+  background-color: #706f6d0f;
+  
+}
+
+.data-grid-header > .thead {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+
+.data-grid-style tbody tr{
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.data-grid-header, .data-grid-style tbody td{
+  padding: 12px;
+}
+
+.sort-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sort-icon {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.sort-icon:hover {
+  background-color: lightgray;
+}
+
+@media (max-width: 768px) {
+
+  .data-grid-style  thead {
+    display: none;
+  }
+  .data-grid-style,
+  .data-grid-style tbody,
+  .data-grid-style tr,
+  .data-grid-style td {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .data-grid-style tr {
+    margin-bottom: 15px;
+    border: 1px solid  #f0f0f0 !important;
+  }
+
+  .data-grid-style td {
+    text-align: right;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+    font-weight: 360;
+    text-overflow: ellipsis;
+  }
+
+  .data-grid-style td:before {
+    content: attr(data-label);
+    padding-left: 6px;
+    text-align: left;
+    font-weight: 500;
+  }
+}
