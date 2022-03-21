@@ -1,0 +1,27 @@
+.pf-style {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  background-color: white;
+  padding-top: 16px;
+}
+
+.pf-item-style {
+  cursor: pointer;
+  padding: 12px;
+  color: gray;
+  border: 2px solid #dee2e6;
+}
+
+.pf-item-style:hover {
+  cursor: pointer;
+  color: gray;
+  background-color: #dee2e6;
+}
+
+.pf-item-active-style {
+  border: 2px solid #5ea1f9;
+  color: #5ea1f9;
+  background-color: white;
+}

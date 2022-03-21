@@ -1,8 +1,9 @@
 .App {
-  /* box-sizing: border-box; */
-  font-family: 'Open Sans', sans-serif;
-  background-color: #dcd9d957;
   display: flex;
+  min-height: 100vh;
+  max-height: fit-content;
+  min-width: 100%;
+  width: fit-content;
   align-items: center;
   justify-content: center;
 }

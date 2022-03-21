@@ -1,0 +1,17 @@
+.users-container-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 32px;
+  background-color: white;
+}
+
+.users-header {
+  font-size: 32px;
+  width: 100%;
+  font-weight: 300;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 32px;
+}
