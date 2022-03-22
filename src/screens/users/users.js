@@ -52,7 +52,7 @@ export default function Users() {
   }
 
   return (
-    <div class="users-container">
+    <div className="users-container">
       {loading == true ? (
         <LoadingSpinner />
       ) : (

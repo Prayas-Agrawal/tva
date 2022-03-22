@@ -126,6 +126,7 @@ export default function DataGrid({
           <tr>
             {columns.map((_col) => (
               <Heading
+                key={Math.random()}
                 name={_col.heading}
                 keyName={_col.field}
                 sortCallback={sortCallback}
@@ -135,7 +136,7 @@ export default function DataGrid({
         </thead>
         <tbody>
           {filterIsEmpty == false ? (
-            pageData.map((el) => <DataRow key={el} user={el} />)
+            pageData.map((el) => <DataRow key={Math.random()} user={el} />)
           ) : (
             <tr>
               <td colspan="100%" style={{ textAlign: "center" }}>
