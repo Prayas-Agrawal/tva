@@ -15,6 +15,7 @@ export class UserDetail {
 
 export class UserDataRow {
   constructor(json) {
+    this.id = json["id"];
     this.first_name = json["first_name"];
     this.last_name = json["last_name"];
     this.age = json["age"];
