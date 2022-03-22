@@ -5,11 +5,15 @@
   font-size: 14px;
   color: #212529;
   font-weight: 360;
+  width: 100%;
+  height: auto;
 }
 
 .data-grid-style {
   border-collapse: collapse;
   text-overflow: ellipsis;
+  width: 100%;
+  height: auto;
 }
 
 .data-grid-style td {
@@ -35,7 +39,7 @@
 }
 
 .data-grid-header, .data-grid-style tbody td{
-  padding: 12px;
+  padding: 10px;
 }
 
 .sort-icons {
