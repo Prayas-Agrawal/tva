@@ -60,9 +60,9 @@ export default function Users() {
           <div className="users-header">Users</div>
           <Search
             filterCallback={handleFilter}
+            size={userRows.length}
             changePageSizeCallback={handleChangePageSize}
           />
-          <NumberOfRecords size={userRows.length} />
           <DataGrid
             data={userRows}
             filterIsEmpty={filterIsEmpty}
