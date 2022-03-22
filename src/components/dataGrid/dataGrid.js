@@ -10,7 +10,7 @@ const DataRow = ({ user }) => {
       <td data-label="First name">
         <>
           <Link
-            to={`/user/${user.id}`}
+            to={`/users/${user.id}`}
             style={{ textDecoration: "none", color: "black" }}
             state={{ user: user, from: "users" }}
           >
